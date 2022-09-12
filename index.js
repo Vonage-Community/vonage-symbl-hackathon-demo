@@ -132,9 +132,6 @@ async function handleWebsocket(ctx) {
                 connection.sendAudio(message);
                 return;
             }
-            if (Buffer.isBuffer(message)) {
-                // Send the audio buffer to Symbl
-            }
         }
     });
 }
