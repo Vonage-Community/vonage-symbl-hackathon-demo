@@ -5,11 +5,16 @@ const Koa = require('koa');
 const router = require('@koa/router')();
 const koaBody = require('koa-body');
 const websockify = require('koa-websocket');
+const Twig = require('twig');
+const twig = Twig.twig;
+const views = require('koa-views');
+const sdk = require('@symblai/symbl-js').sdk;
+const uuid = require('uuid').v4;
 
 require('dotenv').config();
 
 const config = fs.readFileSync(path.join(__dirname, process.env.VONAGE_CONFIG_FILE));
-const appUrl = process.argv[2];
+const appUrl = process.env.TUNNEL_DOMAIN;
 
 const vonage = new Voice({
     applicationId: config.application_id,

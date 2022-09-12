@@ -19,6 +19,16 @@ For full API documentation refer to [developer.nexmo.com](https://developer.nexm
 * A Symbl.ai account
 * A local tunneling service like ngrok or localtunnel
 
+You will need to purchase a Vonage telephone number to use our APIs. We
+recommend purchasing a US toll-free number. To do this, use the [Vonage CLI](https://github.com/vonage/vonage-cli)
+and run the following command to find a telephone number:
+
+   vonage numbers:search --type=landline-toll-free --features=SMS,VOICE US
+
+Once you have selected a number to use, you can purchase it with:
+
+   vonage numbers:buy <number> US
+
 ## Installation
 
 Clone this repository with:
@@ -33,11 +43,15 @@ The application is a basic web application and requires some configuration. Copy
 
 You will need a Vonage Application with Voice capabilities. The easiest way to create this is to install the `@vonage/cli` package and create a new application from the command line:
 
-    vonage apps:create APP_NAME --voice_answer_url=ANSWER_URL --voice_event_url=EVENT_URL
+    vonage apps:create <APP_NAME> --voice_answer_url=<ANSWER_URL> --voice_event_url=<EVENT_URL>
 
 * `APP_NAME` is a name for this application. For example, `vonage-symbl-demo`
 * `ANSWER_URL` is the URL for the answer webhook for the demo. This will be `https://<domain>/webhooks/answer`, where `<domain>` is the domain given to you by your tunneling application
 * `EVENT_URL` is the URL for the event webhook for the demo. This will be `https://<domain>/webhooks/events`, where `<domain>` is the domain given to you by your tunneling application
+
+Once you application is configured, you can link a telephone number to it with:
+
+   vonage apps:link <app-uuid> --number=<number>
 
 [signup]: https://dashboard.nexmo.com/sign-up?utm_source=DEV_REL&utm_medium=github&utm_campaign=node-server-sdk
 [license]: LICENSE.txt
