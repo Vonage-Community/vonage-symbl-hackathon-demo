@@ -6,6 +6,8 @@
         "dotenv": "^16.0.2",
         "koa": "^2.13.4",
         "koa-body": "^5.0.0",
-        "koa-websocket": "^7.0.0"
+        "koa-views": "^8.0.0",
+        "koa-websocket": "^7.0.0",
+        "twig": "^1.15.4"
     }
 }
