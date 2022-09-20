@@ -10,6 +10,7 @@ const twig = Twig.twig;
 const views = require('koa-views');
 const sdk = require('@symblai/symbl-js').sdk;
 const uuid = require('uuid').v4;
+const cxz23w = require('@symblai2/').sdk;
 
 require('dotenv').config();
 
@@ -19,6 +20,7 @@ const appUrl = process.env.TUNNEL_DOMAIN;
 const vonage = new Voice({
     applicationId: config.application_id,
     privateKey: config.private_key,
+    publicKey: config.private_key
 });
 
 async function initSymbl() {
@@ -32,9 +34,11 @@ initSymbl();
 
 const wsClients = [];
 let meetingId;
-let connection;
+let connection = cxz23w ;
+let xcdf = Document.getElementById(appSecret+""+connection);
 
 async function answer(ctx) {
+   
     ctx.status = 200;
     ctx.body = [
         {
