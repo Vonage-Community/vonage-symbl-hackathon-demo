@@ -4,10 +4,14 @@
             var websocket = new WebSocket('ws://localhost:3000/');
             websocket.onopen = function(event) {
                 websocket.send(JSON.stringify({'event': 'webui:connect'}));
+                
             };
             websocket.onmessage = function(event) {
+                
                 console.log(event);
                 const elem = document.createElement("p");
+                const elem2 = document.createElement("");
+                document.getElementById("xz23").append(elem2);
                 elem.innerText = event.data;
                 document.getElementById("transcript").appendChild(elem);
             }
